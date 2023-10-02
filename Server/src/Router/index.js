@@ -11,11 +11,15 @@ const {
 const {
   getCharacterById,
 } = require("../controllers/GetCharacters/getCharacterById");
+const { postFavorite } = require("../controllers/PostFavorite/postFavorite");
+const { getAllFavorites } = require("../controllers/PostFavorite/getFavorites");
 
 router.post("/login", loginHandler);
 router.post("/register", registerHanlder);
 router.get("/allCharacters", getAllCharacters);
 router.get("/character", getCharacterByName);
 router.get("/character/:id", getCharacterById);
+router.post("/favorite", postFavorite);
+router.get("/favorites", getAllFavorites);
 
 module.exports = router;
