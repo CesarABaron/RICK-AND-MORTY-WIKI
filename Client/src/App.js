@@ -29,17 +29,16 @@ function App() {
   };
 
   useEffect(() => {
-    if (allCharacters.length > 0) {
-      dispatch(getAllCharacters());
-    }
+    dispatch(getAllCharacters());
+
     !access && navigate("/");
   }, [access]);
 
-  const ocation = useLocation();
+  const location = useLocation();
 
   return (
     <div className={styles.app}>
-      {ocation.pathname !== "/" && <SearchBar />}
+      {location.pathname !== "/" && <SearchBar />}
       <Routes>
         <Route
           path="/home"

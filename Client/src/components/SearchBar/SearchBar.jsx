@@ -9,11 +9,12 @@ function SearchBar(props) {
   const dispatch = useDispatch();
   const [id, setid] = useState("");
   const [name, setName] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleChange = (e) => {
     setid(e.target.value);
     setName(e.target.value);
-    dispatch(getCharactersByName(name));
+    dispatch(getCharactersByName(name, currentPage));
   };
 
   return (

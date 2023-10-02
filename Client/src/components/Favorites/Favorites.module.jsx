@@ -1,15 +1,22 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import Card from "../Card/Card";
-import { allFavorites, filterCards, orderCards, removeFav } from "../../redux/actions";
+import {
+  allFavorites,
+  filterCards,
+  orderCards,
+  removeFav,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { MainDiv, MainDiv2 } from "./styled.components";
-import styles from "./favorite.module.css"
-
+import styles from "./favorite.module.css";
 
 const Favorites = () => {
   const myFavorites = useSelector((state) => state.myFavorites);
 
+  // useEffect(() => {
+  //   dispatch(allFavorites());
+  // }, []);
 
   const [aux, setAux] = useState(false);
 
@@ -21,11 +28,11 @@ const Favorites = () => {
   };
 
   const handleFilter = (e) => {
-if(e.target.value === "allFavorite"){
-  dispatch(allFavorites())
-}else{
-  dispatch(filterCards(e.target.value));
-}
+    if (e.target.value === "allFavorite") {
+      dispatch(allFavorites());
+    } else {
+      dispatch(filterCards(e.target.value));
+    }
   };
 
   return (
@@ -37,7 +44,7 @@ if(e.target.value === "allFavorite"){
         </select>
 
         <select className={styles.select2} onChange={handleFilter}>
-          <option value= "allFavorite">  All Favorites </option>
+          <option value="allFavorite"> All Favorites </option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Genderless">Genderless</option>
@@ -54,7 +61,7 @@ if(e.target.value === "allFavorite"){
           gender={char.gender}
           origin={char.origin}
           image={char.image}
-          onClose={()=> dispatch(removeFav(char.id))}
+          onClose={() => dispatch(removeFav(char.id))}
         />
       ))}
     </MainDiv>

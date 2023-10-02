@@ -6,12 +6,14 @@ export const ORDER = "ORDER";
 export const ALLFAVORITES = "ALLFAVORITES";
 export const GET_ALL_CHARACTERS = "GET_ALL_CHARACTERS";
 export const GETBYNAME = "GETBYNAME";
+export const GECURRENT = "GECURRENT";
 
 export const addFav = (character) => {
+  console.log(character);
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/rickandmorty/fav",
+        "http://localhost:3001/rickandmorty/favorite",
         character
       );
       dispatch({ type: ADD_FAV, payload: response.data });
@@ -47,17 +49,11 @@ export function orderCards(orden) {
   };
 }
 
-export function allFavorites() {
-  return {
-    type: ALLFAVORITES,
-  };
-}
-
-export const getAllCharacters = () => {
+export const getAllCharacters = (page) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/allCharacters`
+        `http://localhost:3001/rickandmorty/allCharacters?page=${page}`
       );
       console.log("action", response.data);
       dispatch({
@@ -68,11 +64,11 @@ export const getAllCharacters = () => {
   };
 };
 
-export const getCharactersByName = (name) => {
+export const getCharactersByName = (name, page) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/character?name=${name}`
+        `http://localhost:3001/rickandmorty/character?name=${name}&page=${page}`
       );
 
       dispatch({
@@ -80,5 +76,30 @@ export const getCharactersByName = (name) => {
         payload: response.data,
       });
     } catch (error) {}
+  };
+};
+
+export const allFavorites = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/rickandmorty/favorites`
+      );
+
+      dispatch({
+        type: ALLFAVORITES,
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
+};
+
+export const currentP = (data) => {
+  return async function (dispatch) {
+    console.log("current", data);
+    dispatch({
+      type: GECURRENT,
+      payload: data,
+    });
   };
 };

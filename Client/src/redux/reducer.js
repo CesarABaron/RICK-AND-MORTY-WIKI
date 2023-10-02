@@ -6,9 +6,10 @@ import {
   ALLFAVORITES,
   GET_ALL_CHARACTERS,
   GETBYNAME,
+  GECURRENT,
 } from "./actions";
 
-let initialState = { myFavorites: [], allCharacters: [] };
+let initialState = { myFavorites: [], allCharacters: [], current: [] };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -50,13 +51,19 @@ function rootReducer(state = initialState, action) {
     case ALLFAVORITES:
       return {
         ...state,
-        allCharacters: action.payload,
+        myFavorites: action.payload,
       };
 
     case GETBYNAME:
       return {
         ...state,
         allCharacters: action.payload,
+      };
+
+    case GECURRENT:
+      return {
+        ...state,
+        current: action.payload,
       };
 
     default:

@@ -8,7 +8,6 @@ export default function Card(character) {
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.myFavorites);
   const allCharacters = useSelector((state) => state.allCharacters);
-  console.log(character);
 
   const [isfav, setIsfav] = useState(false);
 
@@ -27,15 +26,15 @@ export default function Card(character) {
   useEffect(() => {
     myFavorites.forEach((fav) => {
       if (fav.id === character.id) {
-        setIsfav(true);
+        setIsfav(false);
       }
     });
 
-    allCharacters.forEach((fav) => {
-      if (fav.id === character.id) {
-        setIsfav(true);
-      }
-    });
+    //  allCharacters.forEach((fav) => {
+    //    if (fav.id === character.id) {
+    //      setIsfav(true);
+    //    }
+    //  });
   }, [myFavorites, allCharacters]);
 
   return (
@@ -45,13 +44,13 @@ export default function Card(character) {
       ) : (
         <button onClick={handleFavorite}>🤍</button>
       )}
-      <button
+      {/* <button
         onClick={() => {
           character.onClose(character.id);
         }}
       >
         x
-      </button>
+      </button> */}
 
       <p>Name :{character.name}</p>
       <p>Status: {character.status}</p>
