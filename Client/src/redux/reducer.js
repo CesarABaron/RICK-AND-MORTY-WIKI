@@ -5,6 +5,7 @@ import {
   ORDER,
   ALLFAVORITES,
   GET_ALL_CHARACTERS,
+  GETBYNAME,
 } from "./actions";
 
 let initialState = { myFavorites: [], allCharacters: [] };
@@ -47,6 +48,12 @@ function rootReducer(state = initialState, action) {
       };
 
     case ALLFAVORITES:
+      return {
+        ...state,
+        allCharacters: action.payload,
+      };
+
+    case GETBYNAME:
       return {
         ...state,
         allCharacters: action.payload,

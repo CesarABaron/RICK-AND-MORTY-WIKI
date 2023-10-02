@@ -5,6 +5,7 @@ export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 export const ALLFAVORITES = "ALLFAVORITES";
 export const GET_ALL_CHARACTERS = "GET_ALL_CHARACTERS";
+export const GETBYNAME = "GETBYNAME";
 
 export const addFav = (character) => {
   return async function (dispatch) {
@@ -61,6 +62,21 @@ export const getAllCharacters = () => {
       console.log("action", response.data);
       dispatch({
         type: GET_ALL_CHARACTERS,
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
+};
+
+export const getCharactersByName = (name) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/rickandmorty/character?name=${name}`
+      );
+
+      dispatch({
+        type: GETBYNAME,
         payload: response.data,
       });
     } catch (error) {}

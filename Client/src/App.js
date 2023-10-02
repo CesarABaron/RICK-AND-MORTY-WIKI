@@ -21,8 +21,6 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("estadoglobal en pp ", allCharacters);
-
   const [access, setAccess] = useState(true);
 
   const onClose = (id) => {
@@ -31,7 +29,9 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(getAllCharacters());
+    if (allCharacters.length > 0) {
+      dispatch(getAllCharacters());
+    }
     !access && navigate("/");
   }, [access]);
 

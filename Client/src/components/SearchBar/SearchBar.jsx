@@ -1,31 +1,39 @@
-import styles from "../SearchBar/searchbar.module.css"
+import styles from "../SearchBar/searchbar.module.css";
 import { useState } from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getCharactersByName } from "../../redux/actions";
 
+function SearchBar(props) {
+  const characters = useSelector((state) => state.allCharacters);
+  const dispatch = useDispatch();
+  const [id, setid] = useState("");
+  const [name, setName] = useState("");
 
- function SearchBar(props) {
+  const handleChange = (e) => {
+    setid(e.target.value);
+    setName(e.target.value);
+    dispatch(getCharactersByName(name));
+  };
 
-const [id,setid] = useState("")
+  return (
+    <div className={styles.barra}>
+      <input type="search" onChange={handleChange} />
 
-const handleChange = (e)=> {
-    setid(e.target.value) 
+      <NavLink to="/favorites">
+        {" "}
+        <button>Favorites</button>{" "}
+      </NavLink>
+      <NavLink to="/home">
+        {" "}
+        <button>Home</button>{" "}
+      </NavLink>
+      <NavLink to="/about">
+        {" "}
+        <button>About</button>{" "}
+      </NavLink>
+    </div>
+  );
 }
 
-   return (
-      <div className={styles.barra}>
-         <input type='search' onChange={handleChange} />
-         <button onClick={() => {props.onSearch(id)}} >Agregar</button>
-         <NavLink  to="/favorites"> <button>Favorites</button>  </NavLink>
-         <NavLink  to="/home"> <button>Home</button>  </NavLink>
-         <NavLink to="/about"> <button>About</button>  </NavLink>
-      
-
-
-      </div>
-   );
-}
-
-
-
-
-export default SearchBar
+export default SearchBar;
