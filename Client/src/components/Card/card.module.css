@@ -1,0 +1,38 @@
+.cardIndividual{
+    transition: transform 0.2s ease-in-out;
+    align-items: center;
+    background-color:#666666;
+    height: auto;
+    width: 30vh;
+    justify-content: space-between;
+    border: 10px ridge rgb(67, 67, 77);
+    margin: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+.cardIndividual:hover {
+    transform: scale(1.1);
+}
+
+.cardIndividual p{
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    color: white;
+}
+
+
+.cardIndividual img{
+width: 30vh;
+}
+
+
+.cardIndividual button{
+    position: relative;
+    left: 90px;
+    border-radius: 20px;
+    cursor: pointer;
+    border:none;
+    padding: 8px 16px;
+    margin-top: 5px;
+}

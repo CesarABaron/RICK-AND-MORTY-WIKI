@@ -1,0 +1,10 @@
+.app{
+    background-image: url(../src/components/assets/wp8344223.jpg);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    background-size: cover;
+}

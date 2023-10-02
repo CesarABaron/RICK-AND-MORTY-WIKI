@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../../cr-pi-countries-main"
+		},
+		{
+			"path": "../../../../../../PI-Countries-main"
+		},
+		{
+			"path": "../../../../../PI-Food-main/api"
+		},
+		{
+			"path": "../../../../../../countries2023-master"
+		}
+	],
+	"settings": {}
+}
