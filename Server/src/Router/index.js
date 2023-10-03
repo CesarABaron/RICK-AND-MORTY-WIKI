@@ -1,7 +1,9 @@
 const { Router } = require("express");
 const router = Router();
-const { loginHandler } = require("../handlers/Login/loginHanlder");
-const { registerHanlder } = require("../handlers/Register/UserRegisterHanlder");
+const { loginController } = require("../controllers/Login/loginControler");
+const {
+  registerController,
+} = require("../controllers/Register/registerUserController");
 const {
   getAllCharacters,
 } = require("../controllers/GetCharacters/getCharactersDb");
@@ -14,8 +16,8 @@ const {
 const { postFavorite } = require("../controllers/PostFavorite/postFavorite");
 const { getAllFavorites } = require("../controllers/PostFavorite/getFavorites");
 
-router.post("/login", loginHandler);
-router.post("/register", registerHanlder);
+router.post("/login", loginController);
+router.post("/register", registerController);
 router.get("/allCharacters", getAllCharacters);
 router.get("/character", getCharacterByName);
 router.get("/character/:id", getCharacterById);

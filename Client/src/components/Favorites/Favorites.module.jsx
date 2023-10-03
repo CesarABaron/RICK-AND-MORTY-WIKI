@@ -14,9 +14,9 @@ import styles from "./favorite.module.css";
 const Favorites = () => {
   const myFavorites = useSelector((state) => state.myFavorites);
 
-  // useEffect(() => {
-  //   dispatch(allFavorites());
-  // }, []);
+  useEffect(() => {
+    dispatch(allFavorites());
+  }, []);
 
   const [aux, setAux] = useState(false);
 

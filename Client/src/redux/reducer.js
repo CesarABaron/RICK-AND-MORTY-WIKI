@@ -7,9 +7,17 @@ import {
   GET_ALL_CHARACTERS,
   GETBYNAME,
   GECURRENT,
+  LOGIN,
 } from "./actions";
 
-let initialState = { myFavorites: [], allCharacters: [], current: [] };
+let initialState = {
+  myFavorites: [],
+  myFavoritesCoty: [],
+  allCharacters: [],
+  current: [],
+  characterByName: [],
+  loginAcces: [],
+};
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -27,7 +35,7 @@ function rootReducer(state = initialState, action) {
     case FILTER:
       return {
         ...state,
-        myFavorites: state.allCharacters.filter(
+        myFavorites: state.myFavoritesCoty.filter(
           (char) => char.gender === action.payload
         ),
       };
@@ -52,18 +60,25 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         myFavorites: action.payload,
+        myFavoritesCoty: action.payload,
       };
 
     case GETBYNAME:
       return {
         ...state,
-        allCharacters: action.payload,
+        characterByName: action.payload,
       };
 
     case GECURRENT:
       return {
         ...state,
         current: action.payload,
+      };
+
+    case LOGIN:
+      return {
+        ...state,
+        loginAcces: action.payload,
       };
 
     default:

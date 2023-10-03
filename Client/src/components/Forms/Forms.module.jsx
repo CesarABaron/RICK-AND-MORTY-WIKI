@@ -1,29 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../Forms/forms.module.css";
-
-const Validacion = (userData) => {
-  let errors = {};
-
-  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userData.email)) {
-    errors.email = "Invalid Email";
-  }
-
-  if (userData.email.length >= 35) {
-    errors.emailLength = "Email length exceeds limit";
-  }
-
-  if (!/\d/.test(userData.password)) {
-    errors.password = "Password must contain a digit";
-  }
-
-  if (userData.password.length < 6 || userData.password.length > 12) {
-    errors.password = "Password must be between 6 and 10 characters";
-  }
-
-  return errors;
-};
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../redux/actions";
+import Validacion from "./validation.js";
+import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 const Forms = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const login = useSelector((state) => state.login);
   const [errors, setErrors] = useState({
     email: "",
     password: "",
@@ -49,6 +35,13 @@ const Forms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      loginUser({ email: userData.email, password: userData.password })
+    ).then(() => {
+      if (localStorage.access === "true") {
+        navigate("/home");
+      }
+    });
   };
 
   return (

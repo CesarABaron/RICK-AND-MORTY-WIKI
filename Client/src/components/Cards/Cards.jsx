@@ -6,18 +6,12 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Cards({ characters }) {
-  const [currentPage, setCurrentPage] = useState(1);
-
   const dispatch = useDispatch();
   const allCharacters = useSelector((state) => state.allCharacters);
 
-  const [currentPageOnEnter, setCurrentPageOnEnter] = useState(currentPage);
-
-  console.log("prev", currentPage.prevState);
-
   useEffect(() => {
-    dispatch(getAllCharacters(currentPage));
-  }, [currentPage, currentPageOnEnter]);
+    dispatch(getAllCharacters());
+  }, []);
 
   return (
     <div className={styles.allcards}>
@@ -36,15 +30,6 @@ function Cards({ characters }) {
           />
         );
       })}
-
-      <button
-        onClick={() => setCurrentPage(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        Anterior
-      </button>
-
-      <button onClick={() => setCurrentPage(currentPage + 1)}>Siguiente</button>
     </div>
   );
 }

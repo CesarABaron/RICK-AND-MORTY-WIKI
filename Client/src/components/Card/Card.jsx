@@ -23,20 +23,6 @@ export default function Card(character) {
     }
   };
 
-  useEffect(() => {
-    myFavorites.forEach((fav) => {
-      if (fav.id === character.id) {
-        setIsfav(false);
-      }
-    });
-
-    //  allCharacters.forEach((fav) => {
-    //    if (fav.id === character.id) {
-    //      setIsfav(true);
-    //    }
-    //  });
-  }, [myFavorites, allCharacters]);
-
   return (
     <div className={styles.cardIndividual}>
       {isfav ? (

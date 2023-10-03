@@ -7,9 +7,9 @@ export const ALLFAVORITES = "ALLFAVORITES";
 export const GET_ALL_CHARACTERS = "GET_ALL_CHARACTERS";
 export const GETBYNAME = "GETBYNAME";
 export const GECURRENT = "GECURRENT";
+export const LOGIN = "LOGIN";
 
 export const addFav = (character) => {
-  console.log(character);
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -49,11 +49,11 @@ export function orderCards(orden) {
   };
 }
 
-export const getAllCharacters = (page) => {
+export const getAllCharacters = () => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/allCharacters?page=${page}`
+        `http://localhost:3001/rickandmorty/allCharacters`
       );
       console.log("action", response.data);
       dispatch({
@@ -64,11 +64,11 @@ export const getAllCharacters = (page) => {
   };
 };
 
-export const getCharactersByName = (name, page) => {
+export const getCharactersByName = (name) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/character?name=${name}&page=${page}`
+        `http://localhost:3001/rickandmorty/character?name=${name}`
       );
 
       dispatch({
@@ -101,5 +101,25 @@ export const currentP = (data) => {
       type: GECURRENT,
       payload: data,
     });
+  };
+};
+
+export const loginUser = (user) => {
+  console.log(user);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/rickandmorty/login`,
+        user
+      );
+      localStorage.setItem("access", response.data.acces);
+      localStorage.setItem("id", response.data.id);
+      dispatch({
+        type: LOGIN,
+        payload: response.data,
+      });
+    } catch (error) {
+      alert(error.response.data);
+    }
   };
 };

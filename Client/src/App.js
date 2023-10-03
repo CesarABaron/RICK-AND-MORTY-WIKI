@@ -1,27 +1,25 @@
 import styles from "./app.module.css";
 import Cards from "./components/Cards/Cards";
 import SearchBar from "./components/SearchBar/SearchBar";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail.component";
 import Forms from "./components/Forms/Forms.module";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites.module";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getAllCharacters } from "../src/redux/actions";
-import { useDispatch } from "react-redux";
 
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
+  const characterByName = useSelector((state) => state.characterByName);
+  const loginAcces = useSelector((state) => state.loginAcces);
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [access, setAccess] = useState(true);
+  const [access, setAccess] = useState(false);
 
   const onClose = (id) => {
     const charactersfiltered = characters.filter((char) => char.id !== id);
@@ -40,10 +38,18 @@ function App() {
     <div className={styles.app}>
       {location.pathname !== "/" && <SearchBar />}
       <Routes>
-        <Route
-          path="/home"
-          element={<Cards characters={allCharacters} onClose={onClose} />}
-        />
+        {characterByName.length === 0 ? (
+          <Route
+            path="/home"
+            element={<Cards characters={allCharacters} onClose={onClose} />}
+          />
+        ) : (
+          <Route
+            path="/home"
+            element={<Cards characters={characterByName} onClose={onClose} />}
+          />
+        )}
+
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/detail/:id" element={<Detail />} />
