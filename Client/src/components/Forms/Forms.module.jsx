@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../Forms/forms.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions";
 import Validacion from "./validation.js";
-import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Forms = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,9 @@ const Forms = () => {
       loginUser({ email: userData.email, password: userData.password })
     ).then(() => {
       if (localStorage.access === "true") {
-        navigate("/home");
+        Swal.fire("Has iniciado sesion correctamente").then(() => {
+          navigate("/home");
+        });
       }
     });
   };
@@ -73,7 +75,10 @@ const Forms = () => {
           {errors.password && <span>{errors.password}</span>}
         </div>
 
-        <button>Submit</button>
+        <button>Log In</button>
+        <Link to={"/register"}>
+          <p>don't have an account?</p>
+        </Link>
       </form>
     </div>
   );

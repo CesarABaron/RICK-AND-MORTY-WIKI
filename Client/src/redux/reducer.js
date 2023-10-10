@@ -8,6 +8,7 @@ import {
   GETBYNAME,
   GECURRENT,
   LOGIN,
+  REGISTER,
 } from "./actions";
 
 let initialState = {
@@ -17,6 +18,7 @@ let initialState = {
   current: [],
   characterByName: [],
   loginAcces: [],
+  createUser: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -79,6 +81,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         loginAcces: action.payload,
+      };
+
+    case REGISTER:
+      return {
+        ...state,
+        createUser: action.payload,
       };
 
     default:

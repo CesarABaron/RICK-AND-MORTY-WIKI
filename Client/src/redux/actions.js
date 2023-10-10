@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV_FAV";
 export const FILTER = "FILTER";
@@ -8,6 +9,7 @@ export const GET_ALL_CHARACTERS = "GET_ALL_CHARACTERS";
 export const GETBYNAME = "GETBYNAME";
 export const GECURRENT = "GECURRENT";
 export const LOGIN = "LOGIN";
+export const REGISTER = "REGISTER";
 
 export const addFav = (character) => {
   return async function (dispatch) {
@@ -105,7 +107,6 @@ export const currentP = (data) => {
 };
 
 export const loginUser = (user) => {
-  console.log(user);
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -119,7 +120,28 @@ export const loginUser = (user) => {
         payload: response.data,
       });
     } catch (error) {
-      alert(error.response.data);
+      Swal.fire(error.response.data);
+    }
+  };
+};
+
+export const registerUser = (user) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/rickandmorty/register`,
+        user
+      );
+
+      response && Swal.fire("Creado con exito");
+
+      dispatch({
+        type: REGISTER,
+        payload: response.data,
+      });
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject(error.response.data);
     }
   };
 };

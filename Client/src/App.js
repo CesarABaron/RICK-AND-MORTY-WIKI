@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail.component";
 import Forms from "./components/Forms/Forms.module";
+import Example from "./components/Forms/register.module";
 import { useLocation, useNavigate } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites.module";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,7 +37,10 @@ function App() {
 
   return (
     <div className={styles.app}>
-      {location.pathname !== "/" && <SearchBar />}
+      {location.pathname !== "/" && location.pathname !== "/register" && (
+        <SearchBar />
+      )}
+
       <Routes>
         {characterByName.length === 0 ? (
           <Route
@@ -54,6 +58,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/" element={<Forms />} />
+        <Route path="/register" element={<Example />} />
       </Routes>
     </div>
   );
