@@ -26,6 +26,7 @@ function Cards({ characters }) {
             gender={char.gender}
             origin={char.origin}
             image={char.image}
+            users={char.Users}
             // onClose={onClose}
           />
         );

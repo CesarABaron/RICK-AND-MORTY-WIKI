@@ -15,12 +15,11 @@ import { getAllCharacters } from "../src/redux/actions";
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
   const characterByName = useSelector((state) => state.characterByName);
-  const loginAcces = useSelector((state) => state.loginAcces);
+
   const [characters, setCharacters] = useState([]);
+  const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [access, setAccess] = useState(false);
 
   const onClose = (id) => {
     const charactersfiltered = characters.filter((char) => char.id !== id);
@@ -28,10 +27,15 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(getAllCharacters());
+    if (localStorage.length === 0) {
+      navigate("/");
+    }
 
-    !access && navigate("/");
-  }, [access]);
+    if (localStorage.access === true) {
+      setLogin(true);
+      dispatch(getAllCharacters());
+    }
+  }, [login]);
 
   const location = useLocation();
 

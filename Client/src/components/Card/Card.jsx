@@ -3,41 +3,28 @@ import { Link } from "react-router-dom";
 import { addFav, removeFav } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { getAllCharacters } from "../../redux/actions";
 
 export default function Card(character) {
   const dispatch = useDispatch();
-  const myFavorites = useSelector((state) => state.myFavorites);
+
   const allCharacters = useSelector((state) => state.allCharacters);
 
-  const [isfav, setIsfav] = useState(false);
-
   const handleFavorite = () => {
-    if (isfav === true) {
-      setIsfav(false);
-      dispatch(removeFav(character.id));
-    }
-
-    if (isfav === false) {
-      setIsfav(true);
-      dispatch(addFav(character));
-    }
+    dispatch(addFav({ id: localStorage.id, char: character.id })).then(() =>
+      dispatch(getAllCharacters())
+    );
   };
+
+  useEffect(() => {}, [allCharacters]);
 
   return (
     <div className={styles.cardIndividual}>
-      {isfav ? (
+      {character.users.length !== 0 ? (
         <button onClick={handleFavorite}>❤️</button>
       ) : (
         <button onClick={handleFavorite}>🤍</button>
       )}
-      {/* <button
-        onClick={() => {
-          character.onClose(character.id);
-        }}
-      >
-        x
-      </button> */}
-
       <p>Name :{character.name}</p>
       <p>Status: {character.status}</p>
       <p>Especies: {character.species}</p>

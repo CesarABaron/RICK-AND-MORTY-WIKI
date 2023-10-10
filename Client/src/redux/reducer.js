@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_CHARACTERS:
       return {
         ...state,
-        allCharacters: action.payload,
+        allCharacters: action.payload.slice(0, 18),
       };
 
     case ORDER:
