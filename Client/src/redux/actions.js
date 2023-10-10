@@ -81,11 +81,12 @@ export const getCharactersByName = (name) => {
   };
 };
 
-export const allFavorites = () => {
+export const allFavorites = (user) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/rickandmorty/favorites`
+      const response = await axios.post(
+        `http://localhost:3001/rickandmorty/favorites`,
+        user
       );
 
       dispatch({

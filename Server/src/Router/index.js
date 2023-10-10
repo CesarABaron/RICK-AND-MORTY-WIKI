@@ -22,6 +22,6 @@ router.get("/allCharacters", getAllCharacters);
 router.get("/character", getCharacterByName);
 router.get("/character/:id", getCharacterById);
 router.post("/favorite", postFavorite);
-router.get("/favorites", getAllFavorites);
+router.post("/favorites", getAllFavorites);
 
 module.exports = router;
