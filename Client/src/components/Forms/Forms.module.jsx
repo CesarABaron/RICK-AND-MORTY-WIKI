@@ -77,7 +77,7 @@ const Forms = () => {
 
         <button>Log In</button>
         <Link to={"/register"}>
-          <p>don't have an account?</p>
+          <p className={styles.doyu}>don't have an account?</p>
         </Link>
       </form>
     </div>

@@ -1,18 +1,24 @@
-const { Favorite } = require("../../DB_connection");
+const { User, Characters } = require("../../DB_connection");
 
 const postFavorite = async (req, res) => {
   try {
-    const response = await Favorite.create({
-      id: req.body.id,
-      name: req.body.name,
-      status: req.body.status,
-      species: req.body.species,
-      gender: req.body.gender,
-      origin: req.body.origin,
-      image: req.body.image,
-    });
+    const response = await User.findByPk(req.body.id);
+    const responseCharacters = await Characters.findByPk(req.body.char);
+    const message = { message: "" };
 
-    res.status(200).json("se ha creado corretamente");
+    isFavorited = await response.hasCharacters(responseCharacters);
+
+    if (!isFavorited) {
+      await response.addCharacters(responseCharacters);
+      message.message = "Favorited Added";
+    }
+
+    if (isFavorited) {
+      await response.removeCharacters(responseCharacters);
+      message.message = "Favorited Deleted";
+    }
+
+    res.status(200).json(message);
   } catch (error) {
     res.status(400).json(error.message);
   }

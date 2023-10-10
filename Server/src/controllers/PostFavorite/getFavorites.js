@@ -1,8 +1,9 @@
-const { Favorite } = require("../../DB_connection");
+const { User, Characters } = require("../../DB_connection");
 
 const getAllFavorites = async (req, res) => {
-  const getCharacters = await Favorite.findAll();
-  res.status(200).json(getCharacters);
+  const userFavorites = await User.findAll({ include: { model: Characters } });
+
+  res.status(200).json(userFavorites);
 };
 
 module.exports = {
