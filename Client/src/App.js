@@ -19,6 +19,25 @@ function App() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [page, setPage] = useState({
+    firstCard: 1,
+    lastCard: 20,
+  });
+
+  const nextPage = () => {
+    if (page.lastCard > 1) {
+      alert("this is the first page ");
+      return;
+    } else {
+      setPage({ ...page, firstCard: firstCard + 20, lastCard: lastCard + 20 });
+      dispatch(next(page));
+    }
+  };
+
+  const backpage = () => {
+    setPage({ ...page, firstCard: firstCard - 20, lastCard: lastCard - 20 });
+    dispatch(back(page));
+  };
 
   useEffect(() => {
     if (localStorage.length === 0) {
@@ -38,6 +57,11 @@ function App() {
       {location.pathname !== "/" && location.pathname !== "/register" && (
         <SearchBar />
       )}
+
+      <div className={styles.paginate}>
+        <button>Back</button>
+        <button>Next</button>
+      </div>
 
       <Routes>
         {characterByName?.length === 0 ? (

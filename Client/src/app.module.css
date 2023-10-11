@@ -8,3 +8,13 @@
     overflow-y: auto;
     background-size: cover;
 }
+
+
+.paginate{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 50px;
+
+}
