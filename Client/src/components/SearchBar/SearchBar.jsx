@@ -30,7 +30,7 @@ function SearchBar(props) {
         <input name="name" onChange={handleChange} type="search" />
       )}
 
-      {location.pathname === "home" && (
+      {location.pathname === "/home" && (
         <button onClick={handleSubmit}>Search</button>
       )}
 

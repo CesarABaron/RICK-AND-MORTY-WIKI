@@ -16,7 +16,8 @@ export default function Card(character) {
 
   return (
     <div className={styles.cardIndividual}>
-      {character?.users.length !== 0 ? (
+      {character?.users.length !== 0 &&
+      character?.users.some((user) => user.id === localStorage.id) ? (
         <button onClick={handleFavorite}>❤️</button>
       ) : (
         <button onClick={handleFavorite}>🤍</button>
