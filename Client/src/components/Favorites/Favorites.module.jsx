@@ -1,11 +1,6 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-import {
-  allFavorites,
-  filterCards,
-  orderCards,
-  removeFav,
-} from "../../redux/actions";
+import { allFavorites, filterCards, orderCards } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { MainDiv, MainDiv2 } from "./styled.components";
@@ -53,20 +48,22 @@ const Favorites = () => {
           <option value="unknown">unknown</option>
         </select>
       </MainDiv2>
-
       {myFavorites && myFavorites?.length > 0 ? (
-        myFavorites?.map((char) => (
-          <Card
-            id={char?.id}
-            name={char?.name}
-            status={char?.status}
-            species={char?.species}
-            gender={char?.gender}
-            origin={char?.origin}
-            image={char?.image}
-            users={char?.user_favorite}
-          />
-        ))
+        myFavorites?.map((char) => {
+          const FavId = char.user_favorite.UserId;
+          return (
+            <Card
+              id={char?.id}
+              name={char?.name}
+              status={char?.status}
+              species={char?.species}
+              gender={char?.gender}
+              origin={char?.origin}
+              image={char?.image}
+              users={[{ id: FavId }]}
+            />
+          );
+        })
       ) : (
         <p className={styles.dont}>No se han encontrado favoritos.</p>
       )}
