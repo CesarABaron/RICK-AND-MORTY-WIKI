@@ -41,9 +41,7 @@ function SearchBar(props) {
       <NavLink to="/home">
         <button>Home</button>
       </NavLink>
-      <NavLink to="/about">
-        <button>About</button>
-      </NavLink>
+
       <NavLink to="/">
         <button onClick={handleExit}>Salir</button>
       </NavLink>

@@ -3,7 +3,7 @@ import Cards from "./components/Cards/Cards";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import About from "./components/About/About";
+
 import Detail from "./components/Detail/Detail.component";
 import Forms from "./components/Forms/Forms.module";
 import Example from "./components/Forms/register.module";
@@ -49,7 +49,6 @@ function App() {
           />
         )}
 
-        <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/" element={<Forms />} />
