@@ -12,15 +12,17 @@ import { MainDiv, MainDiv2 } from "./styled.components";
 import styles from "./favorite.module.css";
 
 const Favorites = () => {
+  const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.myFavorites);
+  const copy = useSelector((state) => state.myFavoritesCoty);
 
   useEffect(() => {
-    dispatch(allFavorites());
-  }, []);
+    if (myFavorites !== copy) {
+      dispatch(allFavorites({ id: localStorage.id }));
+    }
+  }, [myFavorites]);
 
   const [aux, setAux] = useState(false);
-
-  const dispatch = useDispatch();
 
   const handleOrder = (e) => {
     dispatch(orderCards(e.target.value));
@@ -52,18 +54,22 @@ const Favorites = () => {
         </select>
       </MainDiv2>
 
-      {myFavorites.map((char) => (
-        <Card
-          id={char.id}
-          name={char.name}
-          status={char.status}
-          species={char.species}
-          gender={char.gender}
-          origin={char.origin}
-          image={char.image}
-          onClose={() => dispatch(removeFav(char.id))}
-        />
-      ))}
+      {myFavorites && myFavorites?.length > 0 ? (
+        myFavorites?.map((char) => (
+          <Card
+            id={char?.id}
+            name={char?.name}
+            status={char?.status}
+            species={char?.species}
+            gender={char?.gender}
+            origin={char?.origin}
+            image={char?.image}
+            users={char?.user_favorite}
+          />
+        ))
+      ) : (
+        <p className={styles.dont}>No se han encontrado favoritos.</p>
+      )}
     </MainDiv>
   );
 };

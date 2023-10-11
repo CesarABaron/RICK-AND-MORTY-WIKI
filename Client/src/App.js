@@ -10,21 +10,15 @@ import Example from "./components/Forms/register.module";
 import { useLocation, useNavigate } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites.module";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCharacters } from "../src/redux/actions";
+import { getAllCharacters, allFavorites } from "../src/redux/actions";
 
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
   const characterByName = useSelector((state) => state.characterByName);
 
-  const [characters, setCharacters] = useState([]);
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const onClose = (id) => {
-    const charactersfiltered = characters.filter((char) => char.id !== id);
-    setCharacters(charactersfiltered);
-  };
 
   useEffect(() => {
     if (localStorage.length === 0) {
@@ -35,7 +29,7 @@ function App() {
       setLogin(true);
       dispatch(getAllCharacters());
     }
-  }, [login]);
+  }, []);
 
   const location = useLocation();
 
@@ -46,15 +40,12 @@ function App() {
       )}
 
       <Routes>
-        {characterByName.length === 0 ? (
-          <Route
-            path="/home"
-            element={<Cards characters={allCharacters} onClose={onClose} />}
-          />
+        {characterByName?.length === 0 ? (
+          <Route path="/home" element={<Cards characters={allCharacters} />} />
         ) : (
           <Route
             path="/home"
-            element={<Cards characters={characterByName} onClose={onClose} />}
+            element={<Cards characters={characterByName} />}
           />
         )}
 

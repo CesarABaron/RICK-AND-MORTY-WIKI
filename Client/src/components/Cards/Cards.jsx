@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Cards({ characters }) {
   const dispatch = useDispatch();
-  const allCharacters = useSelector((state) => state.allCharacters);
 
   useEffect(() => {
     dispatch(getAllCharacters());
@@ -15,7 +14,7 @@ function Cards({ characters }) {
 
   return (
     <div className={styles.allcards}>
-      {characters.map((char) => {
+      {characters?.map((char) => {
         return (
           <Card
             key={char.id}
@@ -27,7 +26,6 @@ function Cards({ characters }) {
             origin={char.origin}
             image={char.image}
             users={char.Users}
-            // onClose={onClose}
           />
         );
       })}

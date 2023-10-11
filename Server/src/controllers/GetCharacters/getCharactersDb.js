@@ -5,6 +5,7 @@ const getAllCharacters = async (req, res) => {
   // const pageSize = 20;
 
   const getCharacters = await Characters.findAll({
+    order: [["id", "ASC"]],
     include: { model: User },
     // limit: pageSize,
     // offset: (page - 1) * pageSize,

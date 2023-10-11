@@ -10,6 +10,7 @@ export const GETBYNAME = "GETBYNAME";
 export const GECURRENT = "GECURRENT";
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
+export const PAGINATE = "PAGINATE";
 
 export const addFav = (character) => {
   return async function (dispatch) {
@@ -144,5 +145,14 @@ export const registerUser = (user) => {
     } catch (error) {
       return Promise.reject(error.response.data);
     }
+  };
+};
+
+export const paginateCharacter = (paginado) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "PAGINATE",
+      payload: paginado,
+    });
   };
 };

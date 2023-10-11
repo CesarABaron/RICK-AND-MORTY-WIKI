@@ -9,6 +9,7 @@ import {
   GECURRENT,
   LOGIN,
   REGISTER,
+  PAGINATE,
 } from "./actions";
 
 let initialState = {
@@ -87,6 +88,15 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         createUser: action.payload,
+      };
+
+    case PAGINATE:
+      return {
+        ...state,
+        rickView: state.allCharacters.slice(
+          action.payload.num1,
+          action.payload.num2
+        ),
       };
 
     default:

@@ -3,17 +3,20 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCharactersByName } from "../../redux/actions";
+import { useLocation } from "react-router-dom";
 
 function SearchBar(props) {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [id, setid] = useState("");
-  const [name, setName] = useState("");
+  const [input, setInput] = useState("");
 
   const handleChange = (e) => {
-    setid(e.target.value);
-    setName(e.target.value);
-    dispatch(getCharactersByName(name));
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    dispatch(getCharactersByName(input));
   };
 
   const handleExit = () => {
@@ -23,23 +26,25 @@ function SearchBar(props) {
 
   return (
     <div className={styles.barra}>
-      <input type="search" onChange={handleChange} />
+      {location.pathname === "/home" && (
+        <input name="name" onChange={handleChange} type="search" />
+      )}
+
+      {location.pathname === "home" && (
+        <button onClick={handleSubmit}>Search</button>
+      )}
 
       <NavLink to="/favorites">
-        {" "}
-        <button>Favorites</button>{" "}
+        <button>Favorites</button>
       </NavLink>
       <NavLink to="/home">
-        {" "}
-        <button>Home</button>{" "}
+        <button>Home</button>
       </NavLink>
       <NavLink to="/about">
-        {" "}
-        <button>About</button>{" "}
+        <button>About</button>
       </NavLink>
       <NavLink to="/">
-        {" "}
-        <button onClick={handleExit}>Salir</button>{" "}
+        <button onClick={handleExit}>Salir</button>
       </NavLink>
     </div>
   );
