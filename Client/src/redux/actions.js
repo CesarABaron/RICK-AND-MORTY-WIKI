@@ -12,6 +12,8 @@ export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const PAGINATE = "PAGINATE";
 export const CLEAR = "CLEAR";
+export const NEXT = "NEXT";
+export const BACK = "BACK";
 
 export const addFav = (character) => {
   return async function (dispatch) {
@@ -163,6 +165,24 @@ export const clearFav = () => {
   return (dispatch) => {
     return dispatch({
       type: "CLEAR",
+    });
+  };
+};
+
+export const next = (next) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "NEXT",
+      payload: next,
+    });
+  };
+};
+
+export const back = (back) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "BACK",
+      payload: back,
     });
   };
 };

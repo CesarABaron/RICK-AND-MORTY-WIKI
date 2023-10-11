@@ -10,7 +10,7 @@ import Example from "./components/Forms/register.module";
 import { useLocation, useNavigate } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites.module";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCharacters } from "../src/redux/actions";
+import { getAllCharacters, next, back } from "../src/redux/actions";
 
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
@@ -29,7 +29,7 @@ function App() {
       alert("this is the first page ");
       return;
     } else {
-      setPage({ ...page, firstCard: firstCard + 20, lastCard: lastCard + 20 });
+      setPage({ ...page, firstCard: firstCard + 20 });
       dispatch(next(page));
     }
   };

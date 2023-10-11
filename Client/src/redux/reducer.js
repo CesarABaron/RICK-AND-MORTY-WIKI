@@ -11,6 +11,8 @@ import {
   REGISTER,
   PAGINATE,
   CLEAR,
+  NEXT,
+  BACK,
 } from "./actions";
 
 let initialState = {
@@ -21,6 +23,7 @@ let initialState = {
   characterByName: [],
   loginAcces: [],
   createUser: false,
+  paginateHomeView: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -101,9 +104,27 @@ function rootReducer(state = initialState, action) {
     case PAGINATE:
       return {
         ...state,
-        rickView: state.allCharacters.slice(
+        paginateHomeView: state.allCharacters.slice(
           action.payload.num1,
           action.payload.num2
+        ),
+      };
+
+    case BACK:
+      return {
+        ...state,
+        paginateHomeView: state.allCharacters.slice(
+          action.payload.card1,
+          action.payload.card2
+        ),
+      };
+
+    case NEXT:
+      return {
+        ...state,
+        paginateHomeView: state.allCharacters.slice(
+          action.payload.card1,
+          action.payload.card2
         ),
       };
 
