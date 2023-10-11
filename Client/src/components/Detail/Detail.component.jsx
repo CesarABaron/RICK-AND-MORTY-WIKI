@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./Detail.module.css";
-
+import { Link } from "react-router-dom";
 const Detail = () => {
   const [character, setCharacter] = useState([]);
 
@@ -47,6 +47,9 @@ const Detail = () => {
           </h1>
         </div>
       </div>
+      <Link to="/home">
+        <button className={styles.btnHome}>Back to Home</button>
+      </Link>
     </div>
   );
 };
