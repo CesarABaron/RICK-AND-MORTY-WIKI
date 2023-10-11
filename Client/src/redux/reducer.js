@@ -10,6 +10,7 @@ import {
   LOGIN,
   REGISTER,
   PAGINATE,
+  CLEAR,
 } from "./actions";
 
 let initialState = {
@@ -64,6 +65,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         myFavorites: action.payload,
         myFavoritesCoty: action.payload,
+      };
+
+    case CLEAR:
+      return {
+        ...state,
+        myFavorites: {},
+        myFavoritesCoty: {},
       };
 
     case GETBYNAME:

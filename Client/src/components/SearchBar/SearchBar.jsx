@@ -2,7 +2,7 @@ import styles from "../SearchBar/searchbar.module.css";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getCharactersByName } from "../../redux/actions";
+import { clearFav, getCharactersByName } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 
 function SearchBar(props) {
@@ -21,6 +21,7 @@ function SearchBar(props) {
 
   const handleExit = () => {
     localStorage.clear();
+    dispatch(clearFav());
     navigate("/");
   };
 

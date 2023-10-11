@@ -11,6 +11,7 @@ export const GECURRENT = "GECURRENT";
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const PAGINATE = "PAGINATE";
+export const CLEAR = "CLEAR";
 
 export const addFav = (character) => {
   return async function (dispatch) {
@@ -117,6 +118,7 @@ export const loginUser = (user) => {
       );
       localStorage.setItem("access", response.data.acces);
       localStorage.setItem("id", response.data.id);
+      localStorage.setItem("fav", response.data.favorites);
       dispatch({
         type: LOGIN,
         payload: response.data,
@@ -153,6 +155,14 @@ export const paginateCharacter = (paginado) => {
     return dispatch({
       type: "PAGINATE",
       payload: paginado,
+    });
+  };
+};
+
+export const clearFav = () => {
+  return (dispatch) => {
+    return dispatch({
+      type: "CLEAR",
     });
   };
 };

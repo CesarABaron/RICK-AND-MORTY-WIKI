@@ -4,6 +4,7 @@ import { addFav } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCharacters, allFavorites } from "../../redux/actions";
 import { useEffect } from "react";
+import { createGlobalStyle } from "styled-components";
 
 export default function Card(character) {
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ export default function Card(character) {
 
   return (
     <div className={styles.cardIndividual}>
-      {character?.users.length !== 0 &&
-      character?.users.some((user) => user.id === localStorage.id) ? (
+      {/* character?.users.length !== 0 && */}
+      {character?.users.some((user) => user.id === localStorage.id) ? (
         <button onClick={handleFavorite}>❤️</button>
       ) : (
         <button onClick={handleFavorite}>🤍</button>

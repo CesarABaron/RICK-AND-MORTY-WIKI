@@ -1,6 +1,11 @@
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { allFavorites, filterCards, orderCards } from "../../redux/actions";
+import {
+  allFavorites,
+  filterCards,
+  orderCards,
+  clearFav,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { MainDiv, MainDiv2 } from "./styled.components";
@@ -10,12 +15,20 @@ const Favorites = () => {
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.myFavorites);
   const copy = useSelector((state) => state.myFavoritesCoty);
+  const [isFilter, setIsFilter] = useState(false);
+  const [deleteFav, setDelete] = useState(false);
 
   useEffect(() => {
-    if (myFavorites !== copy) {
-      dispatch(allFavorites({ id: localStorage.id }));
+    if (isFilter === false) {
+      if (myFavorites !== copy) {
+        dispatch(allFavorites({ id: localStorage.id }));
+      }
     }
   }, [myFavorites]);
+
+  // console.log(
+  //   myFavorites.filter((char) => char.user_favorite.UserId === localStorage.id)
+  // );
 
   const [aux, setAux] = useState(false);
 
@@ -26,9 +39,10 @@ const Favorites = () => {
 
   const handleFilter = (e) => {
     if (e.target.value === "allFavorite") {
-      dispatch(allFavorites());
+      dispatch(allFavorites({ id: localStorage.id }));
     } else {
       dispatch(filterCards(e.target.value));
+      setIsFilter(true);
     }
   };
 
@@ -51,18 +65,20 @@ const Favorites = () => {
       {myFavorites && myFavorites?.length > 0 ? (
         myFavorites?.map((char) => {
           const FavId = char.user_favorite.UserId;
-          return (
-            <Card
-              id={char?.id}
-              name={char?.name}
-              status={char?.status}
-              species={char?.species}
-              gender={char?.gender}
-              origin={char?.origin}
-              image={char?.image}
-              users={[{ id: FavId }]}
-            />
-          );
+          {
+            return (
+              <Card
+                id={char?.id}
+                name={char?.name}
+                status={char?.status}
+                species={char?.species}
+                gender={char?.gender}
+                origin={char?.origin}
+                image={char?.image}
+                users={[{ id: FavId }]}
+              />
+            );
+          }
         })
       ) : (
         <p className={styles.dont}>No se han encontrado favoritos.</p>
