@@ -10,7 +10,7 @@ import Example from "./components/Forms/register.module";
 import { useLocation, useNavigate } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites.module";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCharacters, allFavorites } from "../src/redux/actions";
+import { getAllCharacters } from "../src/redux/actions";
 
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
@@ -25,7 +25,7 @@ function App() {
       navigate("/");
     }
 
-    if (localStorage.access === true) {
+    if (localStorage.access === true && !allCharacters) {
       setLogin(true);
       dispatch(getAllCharacters());
     }

@@ -1,4 +1,4 @@
-const { Characters } = require("../../DB_connection");
+const { Characters, User } = require("../../DB_connection");
 const { Op } = require("sequelize");
 
 const getCharacterByName = async (req, res) => {
@@ -10,8 +10,8 @@ const getCharacterByName = async (req, res) => {
       where: {
         name: { [Op.iLike]: `%${req.query.name}%` },
       },
-      // limit: pageSize,
-      // offset: (page - 1) * pageSize,
+      order: [["id", "ASC"]],
+      include: { model: User },
     });
 
     res.status(200).json(response);
