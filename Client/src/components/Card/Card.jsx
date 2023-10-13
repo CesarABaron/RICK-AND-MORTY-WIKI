@@ -1,18 +1,11 @@
 import styles from "../Card/card.module.css";
 import { Link } from "react-router-dom";
 import { addFav } from "../../redux/actions";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllCharacters, allFavorites, next, add } from "../../redux/actions";
-import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { allFavorites } from "../../redux/actions";
 
 export default function Card(character) {
-  const currentPage = useSelector((state) => state.currentPage);
-  const favorites = useSelector((state) => state.myFavorites);
-  const characters = useSelector((state) => state.allCharacters);
-
   const dispatch = useDispatch();
-
-  const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
     dispatch(addFav({ id: localStorage.id, char: character.id }));
@@ -32,12 +25,7 @@ export default function Card(character) {
       <p>Especies: {character?.species}</p>
       <p>Gender: {character?.gender}</p>
       <p>Origin: {character?.origin}</p>
-      <Link
-        onClick={() => {
-          window.sessionStorage.setItem("scrollPosition", window.scrollY);
-        }}
-        to={`/detail/${character?.id}`}
-      >
+      <Link to={`/detail/${character?.id}`}>
         <img src={character?.image} alt="" />
       </Link>
     </div>
