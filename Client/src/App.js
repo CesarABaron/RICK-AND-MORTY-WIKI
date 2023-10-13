@@ -33,7 +33,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className={styles.app}>
+    <div className={styles.home}>
       {location.pathname !== "/" && location.pathname !== "/register" && (
         <SearchBar />
       )}
@@ -43,7 +43,9 @@ function App() {
           path="/home"
           element={
             characterByName[0] === false ? (
-              <div>No hay Personajes con este nombre</div>
+              <div className={styles.nohay}>
+                No hay Personajes con este nombre
+              </div>
             ) : characterByName.length > 0 ? (
               <Cards characters={characterByName} />
             ) : (

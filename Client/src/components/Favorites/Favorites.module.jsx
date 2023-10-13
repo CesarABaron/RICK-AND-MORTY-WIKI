@@ -1,11 +1,6 @@
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-import {
-  allFavorites,
-  filterCards,
-  orderCards,
-  clearFav,
-} from "../../redux/actions";
+import { allFavorites, filterCards, orderCards } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { MainDiv, MainDiv2 } from "./styled.components";
@@ -16,7 +11,6 @@ const Favorites = () => {
   const myFavorites = useSelector((state) => state.myFavorites);
   const copy = useSelector((state) => state.myFavoritesCoty);
   const [isFilter, setIsFilter] = useState(false);
-  const [deleteFav, setDelete] = useState(false);
 
   useEffect(() => {
     if (isFilter === false) {
@@ -25,10 +19,6 @@ const Favorites = () => {
       }
     }
   }, [myFavorites]);
-
-  // console.log(
-  //   myFavorites.filter((char) => char.user_favorite.UserId === localStorage.id)
-  // );
 
   const [aux, setAux] = useState(false);
 
@@ -50,8 +40,8 @@ const Favorites = () => {
     <MainDiv>
       <MainDiv2>
         <select className={styles.select1} onChange={handleOrder}>
-          <option value="A">Ascendente</option>
-          <option value="D">Descendente</option>
+          <option value="A">A - Z</option>
+          <option value="D">Z - A</option>
         </select>
 
         <select className={styles.select2} onChange={handleFilter}>
@@ -81,7 +71,7 @@ const Favorites = () => {
           }
         })
       ) : (
-        <p className={styles.dont}>No se han encontrado favoritos.</p>
+        <p className={styles.dontFound}>No se han encontrado favoritos.</p>
       )}
     </MainDiv>
   );

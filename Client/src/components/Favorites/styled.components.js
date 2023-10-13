@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const MainDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 3vh;
-  margin-left: 5vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 export const MainDiv2 = styled.div`

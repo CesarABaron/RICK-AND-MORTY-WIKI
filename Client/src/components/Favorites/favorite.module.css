@@ -9,7 +9,12 @@
 
 
 
-.dont{
+.dontFound{
     color: aliceblue;
-    font-size: 30px;
+    font-size: 40px;
+    background-attachment: fixed;
+    display: flex;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
 }
