@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "../src/redux/store"
+import store from "../src/redux/store";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,4 +14,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-    

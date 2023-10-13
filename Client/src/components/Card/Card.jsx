@@ -10,7 +10,6 @@ export default function Card(character) {
   const favorites = useSelector((state) => state.myFavorites);
   const characters = useSelector((state) => state.allCharacters);
 
-  console.log(character.users.some((id) => id.id === localStorage.id));
   const dispatch = useDispatch();
 
   const [isFav, setIsFav] = useState(false);
@@ -33,7 +32,12 @@ export default function Card(character) {
       <p>Especies: {character?.species}</p>
       <p>Gender: {character?.gender}</p>
       <p>Origin: {character?.origin}</p>
-      <Link to={`/detail/${character?.id}`}>
+      <Link
+        onClick={() => {
+          window.sessionStorage.setItem("scrollPosition", window.scrollY);
+        }}
+        to={`/detail/${character?.id}`}
+      >
         <img src={character?.image} alt="" />
       </Link>
     </div>
