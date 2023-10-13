@@ -1,5 +1,5 @@
 import styles from "../SearchBar/searchbar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,9 +15,7 @@ function SearchBar(props) {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
-  const byname = useSelector((state) => state.characterByName);
-  const bynameCopy = useSelector((state) => state.characterByName);
-  console.log("by name", byname);
+  const favorites = useSelector((state) => state.myFavorites);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
@@ -28,6 +26,10 @@ function SearchBar(props) {
       dispatch(getAllCharacters());
     }
   };
+
+  useEffect(() => {
+    dispatch(getCharactersByName(input));
+  }, [favorites]);
 
   const handleExit = () => {
     localStorage.clear();

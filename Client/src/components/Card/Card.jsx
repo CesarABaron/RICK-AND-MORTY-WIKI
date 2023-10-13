@@ -8,18 +8,25 @@ import { useEffect, useState } from "react";
 export default function Card(character) {
   const currentPage = useSelector((state) => state.currentPage);
   const favorites = useSelector((state) => state.myFavorites);
+  const characters = useSelector((state) => state.allCharacters);
 
+  console.log(character.users.some((id) => id.id === localStorage.id));
   const dispatch = useDispatch();
 
   const [isFav, setIsFav] = useState(false);
 
-  const handleFavorite = () => {};
+  const handleFavorite = () => {
+    dispatch(addFav({ id: localStorage.id, char: character.id }));
+    dispatch(allFavorites({ id: localStorage.id }));
+  };
 
   return (
     <div className={styles.cardIndividual}>
-      <button onClick={handleFavorite}>❤️</button>
-
-      <button onClick={handleFavorite}>🤍</button>
+      {character.users.some((id) => id.id === localStorage.id) ? (
+        <button onClick={handleFavorite}>❤️</button>
+      ) : (
+        <button onClick={handleFavorite}>🤍</button>
+      )}
 
       <p>Name :{character?.name}</p>
       <p>Status: {character?.status}</p>

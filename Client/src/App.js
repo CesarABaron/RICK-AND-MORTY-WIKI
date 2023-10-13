@@ -14,11 +14,10 @@ import { getAllCharacters, next, back } from "../src/redux/actions";
 
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
+  const favorite = useSelector((state) => state.myFavorites);
   const characterByName = useSelector((state) => state.characterByName);
   const paginateHomeView = useSelector((state) => state.paginateHomeView);
-
-  console.log(characterByName);
-
+  const [recharge, setRecharge] = useState(false);
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -73,7 +72,7 @@ function App() {
     //   setLogin(true);
     //   ;
     // }
-  }, []);
+  }, [favorite, characterByName]);
 
   const location = useLocation();
 

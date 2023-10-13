@@ -61,7 +61,6 @@ export const getAllCharacters = () => {
       const response = await axios.get(
         `http://localhost:3001/rickandmorty/allCharacters`
       );
-      console.log("response", response);
       dispatch({
         type: GET_ALL_CHARACTERS,
         payload: response.data,

@@ -53,7 +53,7 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_CHARACTERS:
       return {
         ...state,
-        allCharacters: action.payload,
+        allCharacters: action.payload.slice(1, 20),
         myFavoritesCoty2: action.payload,
       };
 
