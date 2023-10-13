@@ -39,7 +39,7 @@ const Forms = () => {
       loginUser({ email: userData.email, password: userData.password })
     ).then(() => {
       if (localStorage.access === "true") {
-        Swal.fire("Has iniciado sesion correctamente").then(() => {
+        Swal.fire("You have logged in successfully").then(() => {
           navigate("/home");
         });
       }
@@ -54,7 +54,7 @@ const Forms = () => {
         <div className={styles.div1}>
           <label className="email">Email: </label>
           <input
-            placeholder="Ingresa tu email..."
+            placeholder="Enter your Email..."
             type="text"
             name="email"
             value={userData.email}
@@ -66,7 +66,8 @@ const Forms = () => {
         <div className={styles.div2}>
           <label className="password">Password: </label>
           <input
-            placeholder="Ingresa tu contraseña..."
+            placeholder="
+Enter your password..."
             type="password"
             name="password"
             value={userData.password}
@@ -76,10 +77,10 @@ const Forms = () => {
         </div>
 
         <button>Log In</button>
-        <Link to={"/register"}>
-          <p className={styles.doyu}>don't have an account?</p>
-        </Link>
       </form>
+      <Link to={"/register"}>
+        <p className={styles.doyu}>Don't have an account?</p>
+      </Link>
     </div>
   );
 };

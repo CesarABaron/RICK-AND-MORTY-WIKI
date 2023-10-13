@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Example = () => {
   const navigate = useNavigate();
@@ -62,6 +63,9 @@ const Example = () => {
         <button onClick={handleSubmit} className={style.button} type="submit">
           Sign Up
         </button>
+        <Link to="/">
+          <button> Do you already have an account? </button>
+        </Link>
         {error && <p>Invalid credentials</p>}
       </form>
     </div>

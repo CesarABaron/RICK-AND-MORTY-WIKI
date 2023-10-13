@@ -56,7 +56,7 @@ function SearchBar(props) {
       </NavLink>
 
       <NavLink to="/">
-        <button onClick={handleExit}>Salir</button>
+        <button onClick={handleExit}>Log Out</button>
       </NavLink>
     </div>
   );

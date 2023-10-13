@@ -140,7 +140,7 @@ export const registerUser = (user) => {
         user
       );
 
-      response && Swal.fire("Creado con exito");
+      response && Swal.fire("Your account was created successfully");
 
       dispatch({
         type: REGISTER,

@@ -21,7 +21,7 @@ const loginController = async (req, res) => {
       }
     }
 
-    throw Error("Credenciales invalidas");
+    throw Error("Invalid Credencials");
   } catch (error) {
     res.status(400).json(error.message);
   }

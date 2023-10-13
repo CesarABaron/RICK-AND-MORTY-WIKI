@@ -15,7 +15,7 @@ const registerController = async (req, res) => {
     });
 
     if (created === false) {
-      throw Error("Correo electronico ya existe");
+      throw Error("Email already exist");
     }
 
     res.status(200).json(created);

@@ -37,7 +37,7 @@ const Favorites = () => {
   };
 
   return (
-    <div>
+    <div className={styles.contai}>
       <MainDiv>
         <MainDiv2>
           <select className={styles.select1} onChange={handleOrder}>
@@ -72,7 +72,7 @@ const Favorites = () => {
             }
           })
         ) : (
-          <p className={styles.dontFound}>No se han encontrado favoritos.</p>
+          <p className={styles.dontFound}>No favorites found.</p>
         )}
       </MainDiv>
     </div>

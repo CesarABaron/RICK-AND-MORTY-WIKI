@@ -5,7 +5,7 @@ const getAllFavorites = async (req, res) => {
     const user = await User.findByPk(req.body.id);
 
     if (!user) {
-      return res.status(404).json("Usuario no encontrado");
+      return res.status(404).json("User dont found");
     }
 
     const userFavorites = await user.getCharacters();

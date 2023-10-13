@@ -3,15 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     
     
 }
 
-.doyu{
-    background-color: transparent
-    
-    
-}
+
+
+
 
 
 
@@ -27,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #999999;
+    border: solid #ffffff;
     display: flex;
     
 }
@@ -74,4 +73,22 @@ margin-top: 30px;
 
 .form h1{
    color: white;
+  
+}
+
+.doyu{
+    position: relative;
+   bottom: 100px;
+   right: 90px;
+   padding: 10px;
+   border-radius: 10px;
+  color: aliceblue;
+    background-color: rgba(240, 248, 255, 0.185);
+
+}
+
+
+.doyu:Hover{
+    background-color: aliceblue;
+   color: black;
 }
