@@ -18,6 +18,7 @@ import {
 let initialState = {
   myFavorites: [],
   myFavoritesCoty: [],
+  myFavoritesCoty2: [],
   allCharacters: [],
   current: [],
   characterByName: [],
@@ -53,6 +54,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         allCharacters: action.payload,
+        myFavoritesCoty2: action.payload,
       };
 
     case ORDER:
