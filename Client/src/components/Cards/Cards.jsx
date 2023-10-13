@@ -1,8 +1,5 @@
 import Card from "../Card/Card";
 import styles from "../Cards/cards.module.css";
-import { useState } from "react";
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 function Cards({ characters }) {
   return (
