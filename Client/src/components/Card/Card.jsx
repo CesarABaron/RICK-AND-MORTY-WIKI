@@ -15,9 +15,13 @@ export default function Card(character) {
   return (
     <div className={styles.cardIndividual}>
       {character.users.some((id) => id.id === localStorage.id) ? (
-        <button onClick={handleFavorite}>❤️</button>
+        <button className={styles.button} onClick={handleFavorite}>
+          ❤️
+        </button>
       ) : (
-        <button onClick={handleFavorite}>🤍</button>
+        <button className={styles.button} onClick={handleFavorite}>
+          🤍
+        </button>
       )}
 
       <p>Name :{character?.name}</p>

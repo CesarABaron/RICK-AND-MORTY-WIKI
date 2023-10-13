@@ -5,7 +5,8 @@ export const MainDiv = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-top: 20px;
+  background-attachment: fixed;
 `;
 
 export const MainDiv2 = styled.div`

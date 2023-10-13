@@ -37,43 +37,45 @@ const Favorites = () => {
   };
 
   return (
-    <MainDiv>
-      <MainDiv2>
-        <select className={styles.select1} onChange={handleOrder}>
-          <option value="A">A - Z</option>
-          <option value="D">Z - A</option>
-        </select>
+    <div>
+      <MainDiv>
+        <MainDiv2>
+          <select className={styles.select1} onChange={handleOrder}>
+            <option value="A">A - Z</option>
+            <option value="D">Z - A</option>
+          </select>
 
-        <select className={styles.select2} onChange={handleFilter}>
-          <option value="allFavorite"> All Favorites </option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Genderless">Genderless</option>
-          <option value="unknown">unknown</option>
-        </select>
-      </MainDiv2>
-      {myFavorites && myFavorites?.length > 0 ? (
-        myFavorites?.map((char) => {
-          const FavId = char.user_favorite.UserId;
-          {
-            return (
-              <Card
-                id={char?.id}
-                name={char?.name}
-                status={char?.status}
-                species={char?.species}
-                gender={char?.gender}
-                origin={char?.origin}
-                image={char?.image}
-                users={[{ id: FavId }]}
-              />
-            );
-          }
-        })
-      ) : (
-        <p className={styles.dontFound}>No se han encontrado favoritos.</p>
-      )}
-    </MainDiv>
+          <select className={styles.select2} onChange={handleFilter}>
+            <option value="allFavorite"> All Favorites </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Genderless">Genderless</option>
+            <option value="unknown">unknown</option>
+          </select>
+        </MainDiv2>
+        {myFavorites && myFavorites?.length > 0 ? (
+          myFavorites?.map((char) => {
+            const FavId = char.user_favorite.UserId;
+            {
+              return (
+                <Card
+                  id={char?.id}
+                  name={char?.name}
+                  status={char?.status}
+                  species={char?.species}
+                  gender={char?.gender}
+                  origin={char?.origin}
+                  image={char?.image}
+                  users={[{ id: FavId }]}
+                />
+              );
+            }
+          })
+        ) : (
+          <p className={styles.dontFound}>No se han encontrado favoritos.</p>
+        )}
+      </MainDiv>
+    </div>
   );
 };
 

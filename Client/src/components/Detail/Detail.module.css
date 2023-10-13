@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px;
+    padding: 40px;
 
 
  
@@ -26,8 +26,8 @@
 }
 
 .img{
-    
-    height: 400px;
+    margin-top: 35px;
+    height: 350px;
     border-radius: 10px;
    
    
