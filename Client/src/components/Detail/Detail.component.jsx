@@ -9,14 +9,15 @@ const Detail = () => {
 
   const { id } = useParams();
 
+  const serverURL = "https://rickandmortyserver-hbxk.onrender.com";
+  // const serverURL = "http://localhost:3001";
+
   useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacter(data);
-        }
+    axios(`${serverURL}/rickandmorty/character/${id}`).then(({ data }) => {
+      if (data.name) {
+        setCharacter(data);
       }
-    );
+    });
 
     return setCharacter({});
   }, [id]);
