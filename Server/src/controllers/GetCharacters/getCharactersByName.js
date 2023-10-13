@@ -14,6 +14,10 @@ const getCharacterByName = async (req, res) => {
       include: { model: User },
     });
 
+    if (response.length === 0) {
+      return res.status(201).json([false]);
+    }
+
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json(error.message);

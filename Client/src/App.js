@@ -15,28 +15,51 @@ import { getAllCharacters, next, back } from "../src/redux/actions";
 function App() {
   const allCharacters = useSelector((state) => state.allCharacters);
   const characterByName = useSelector((state) => state.characterByName);
+  const paginateHomeView = useSelector((state) => state.paginateHomeView);
+
+  console.log(characterByName);
 
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [page, setPage] = useState({
-    firstCard: 1,
+    firstCard: 0,
     lastCard: 20,
   });
 
-  const nextPage = () => {
-    if (page.lastCard > 1) {
-      alert("this is the first page ");
-      return;
-    } else {
-      setPage({ ...page, firstCard: firstCard + 20 });
-      dispatch(next(page));
-    }
+  const nextPage = (e) => {
+    setPage({
+      ...page,
+      firstCard: page.firstCard + 20,
+      lastCard: page.lastCard + 20,
+    });
+    dispatch(
+      next({
+        ...page,
+        firstCard: page.firstCard + 20,
+        lastCard: page.lastCard + 20,
+      })
+    );
   };
 
-  const backpage = () => {
-    setPage({ ...page, firstCard: firstCard - 20, lastCard: lastCard - 20 });
-    dispatch(back(page));
+  const backpage = (e) => {
+    if (page.firstCard === 0) {
+      alert("last Page");
+    } else {
+      setPage({
+        ...page,
+        firstCard: page.firstCard - 20,
+        lastCard: page.lastCard - 20,
+      });
+      dispatch(
+        back({
+          ...page,
+          firstCard: page.firstCard - 20,
+          lastCard: page.lastCard - 20,
+        })
+      );
+    }
   };
 
   useEffect(() => {
@@ -44,10 +67,12 @@ function App() {
       navigate("/");
     }
 
-    if (localStorage.access === true && !allCharacters) {
-      setLogin(true);
-      dispatch(getAllCharacters());
-    }
+    dispatch(getAllCharacters());
+
+    // if (localStorage.access === true && !allCharacters) {
+    //   setLogin(true);
+    //   ;
+    // }
   }, []);
 
   const location = useLocation();
@@ -59,20 +84,23 @@ function App() {
       )}
 
       <div className={styles.paginate}>
-        <button>Back</button>
-        <button>Next</button>
+        <button onClick={backpage}>Back</button>
+        <button onClick={nextPage}>Next</button>
       </div>
 
       <Routes>
-        {characterByName?.length === 0 ? (
-          <Route path="/home" element={<Cards characters={allCharacters} />} />
-        ) : (
-          <Route
-            path="/home"
-            element={<Cards characters={characterByName} />}
-          />
-        )}
-
+        <Route
+          path="/home"
+          element={
+            characterByName[0] === false ? (
+              <div>No hay Personajes con este nombre</div>
+            ) : characterByName.length > 0 ? (
+              <Cards characters={characterByName} />
+            ) : (
+              <Cards characters={allCharacters} />
+            )
+          }
+        />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/" element={<Forms />} />

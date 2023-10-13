@@ -2,7 +2,11 @@ import styles from "../SearchBar/searchbar.module.css";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { clearFav, getCharactersByName } from "../../redux/actions";
+import {
+  clearFav,
+  getAllCharacters,
+  getCharactersByName,
+} from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 
 function SearchBar(props) {
@@ -11,12 +15,18 @@ function SearchBar(props) {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
+  const byname = useSelector((state) => state.characterByName);
+  const bynameCopy = useSelector((state) => state.characterByName);
+  console.log("by name", byname);
 
-  const handleSubmit = (e) => {
-    dispatch(getCharactersByName(input));
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    setInput(inputValue); // Actualizar input con el nuevo valor
+    dispatch(getCharactersByName(inputValue));
+    if (inputValue === "") {
+      // Verificar inputValue en lugar de e.target.input
+      dispatch(getAllCharacters());
+    }
   };
 
   const handleExit = () => {
@@ -28,11 +38,12 @@ function SearchBar(props) {
   return (
     <div className={styles.barra}>
       {location.pathname === "/home" && (
-        <input name="name" onChange={handleChange} type="search" />
-      )}
-
-      {location.pathname === "/home" && (
-        <button onClick={handleSubmit}>Search</button>
+        <input
+          name="name"
+          value={input}
+          onChange={handleChange}
+          type="search"
+        />
       )}
 
       <NavLink to="/favorites">

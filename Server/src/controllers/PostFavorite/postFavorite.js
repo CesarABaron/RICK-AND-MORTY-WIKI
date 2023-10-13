@@ -4,21 +4,23 @@ const postFavorite = async (req, res) => {
   try {
     const response = await User.findByPk(req.body.id);
     const responseCharacters = await Characters.findByPk(req.body.char);
-    const message = { message: "" };
+    const responseResult = { message: "", response: "" };
 
     isFavorited = await response.hasCharacters(responseCharacters);
 
     if (!isFavorited) {
-      await response.addCharacters(responseCharacters);
-      message.message = "Favorited Added";
+      const responseAddChar = await response.addCharacters(responseCharacters);
+      responseResult.response = responseAddChar;
     }
 
     if (isFavorited) {
-      await response.removeCharacters(responseCharacters);
-      message.message = "Favorited Deleted";
+      const responsDellChar = await response.removeCharacters(
+        responseCharacters
+      );
+      responseResult.response = responsDellChar;
     }
 
-    res.status(200).json(message);
+    res.status(200).json(responseResult);
   } catch (error) {
     res.status(400).json(error.message);
   }

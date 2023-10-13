@@ -21,9 +21,11 @@ let initialState = {
   allCharacters: [],
   current: [],
   characterByName: [],
+  characterByNameCopy: [],
   loginAcces: [],
   createUser: false,
   paginateHomeView: [],
+  currentPage: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -50,7 +52,7 @@ function rootReducer(state = initialState, action) {
     case GET_ALL_CHARACTERS:
       return {
         ...state,
-        allCharacters: action.payload.slice(0, 18),
+        allCharacters: action.payload,
       };
 
     case ORDER:
@@ -81,6 +83,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         characterByName: action.payload,
+        charactersCopy: action.payload,
       };
 
     case GECURRENT:
@@ -101,32 +104,36 @@ function rootReducer(state = initialState, action) {
         createUser: action.payload,
       };
 
-    case PAGINATE:
-      return {
-        ...state,
-        paginateHomeView: state.allCharacters.slice(
-          action.payload.num1,
-          action.payload.num2
-        ),
-      };
+    // case PAGINATE:
+    //   return {
+    //     ...state,
+    //     paginateHomeView: state.allCharacters.slice(
+    //       // action.payload.num1,
+    //       // action.payload.num2
+    //       1,
+    //       20
+    //     ),
+    //   };
 
-    case BACK:
-      return {
-        ...state,
-        paginateHomeView: state.allCharacters.slice(
-          action.payload.card1,
-          action.payload.card2
-        ),
-      };
+    // case BACK:
+    //   return {
+    //     ...state,
+    //     paginateHomeView: state.allCharacters.slice(
+    //       action.payload.firstCard,
+    //       action.payload.lastCard
+    //     ),
+    //     currentPage: action.payload.firstCard,
+    //     currentPage: action.payload.lastCard,
+    //   };
 
-    case NEXT:
-      return {
-        ...state,
-        paginateHomeView: state.allCharacters.slice(
-          action.payload.card1,
-          action.payload.card2
-        ),
-      };
+    // case NEXT:
+    //   return {
+    //     ...state,
+    //     paginateHomeView: state.allCharacters.slice(
+    //       action.payload.firstCard,
+    //       action.payload.lastCard
+    //     ),
+    //   };
 
     default:
       return {

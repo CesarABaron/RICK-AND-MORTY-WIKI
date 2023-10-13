@@ -61,7 +61,7 @@ export const getAllCharacters = () => {
       const response = await axios.get(
         `http://localhost:3001/rickandmorty/allCharacters`
       );
-
+      console.log("response", response);
       dispatch({
         type: GET_ALL_CHARACTERS,
         payload: response.data,
@@ -81,7 +81,9 @@ export const getCharactersByName = (name) => {
         type: GETBYNAME,
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 };
 
@@ -170,8 +172,9 @@ export const clearFav = () => {
 };
 
 export const next = (next) => {
-  return (dispatch) => {
-    return dispatch({
+  console.log("next", next);
+  return async (dispatch) => {
+    return await dispatch({
       type: "NEXT",
       payload: next,
     });
@@ -179,8 +182,8 @@ export const next = (next) => {
 };
 
 export const back = (back) => {
-  return (dispatch) => {
-    return dispatch({
+  return async (dispatch) => {
+    return await dispatch({
       type: "BACK",
       payload: back,
     });
