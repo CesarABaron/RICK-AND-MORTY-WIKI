@@ -9,8 +9,8 @@ export const MainDiv = styled.div`
   background-attachment: fixed;
 `;
 
-export const MainDiv2 = styled.div`
-  position: absolute;
-  top: 1.5vh;
-  left: 80vh;
-`;
+// export const MainDiv2 = styled.div`
+//   position: absolute;
+//   top: 1.5vh;
+//   left: 50vh;
+// `;

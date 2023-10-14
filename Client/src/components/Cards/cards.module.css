@@ -4,7 +4,7 @@
   justify-content: center;
    align-items: center;
    height: 100%;
-   min-height: 680px;
+   width: 100%;
    margin-top: 20px;
    background-image: url(../assets/wp8344223.jpg) ;
    background-size: cover;
@@ -14,3 +14,6 @@
 
 
 }
+
+
+

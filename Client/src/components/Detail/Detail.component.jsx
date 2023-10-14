@@ -25,11 +25,13 @@ const Detail = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <img
-          className={styles.img}
-          src={character.image && character.image}
-          alt=""
-        />
+        <div className={styles.divImg}>
+          <img
+            className={styles.img}
+            src={character.image && character.image}
+            alt=""
+          />
+        </div>
         <div className={styles.divText}>
           <h1 className={styles.text}>
             Name: "{character.name && character.name}"{" "}

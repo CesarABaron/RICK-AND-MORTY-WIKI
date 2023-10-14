@@ -1,10 +1,12 @@
 .container{
-   height: 100vh;
+    margin-top: 4%;
+   height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 40px;
+    padding: 3.5%;
+    overflow: hidden;
 
 
  
@@ -13,35 +15,68 @@
 
 .card{
     display: flex;
-    gap: 70px;
+    gap: 5%;
+    height: 60Vh;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.322);
-    width: 100%;
     justify-content: center;
-}
-
-
-.text{
+    background-color: rgba(255, 255, 255, 0.267);
+    width: 100vh;
     color: aliceblue;
+    font-size: 80%;
+    padding: 1%;
+    
+
 }
 
-.img{
-    margin-top: 35px;
-    height: 350px;
-    border-radius: 10px;
+@media (min-width: 600px) and (max-width:1230px) {
+    .card {
+        color: aliceblue;
+        font-size: 60%;
+
+
+    }
+}
+
+@media (min-width: 200px) and (max-width:599px) {
+    .card {
+       flex-direction: column;
+    font-size: 40%;
+    height: 70%;
+    width: 100%;
+
+
+    }
+}
+
+
+.card .divImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
    
+}
+.img{
+padding: 5vh;
+height: 40vh;
+    border-radius: 10vh;
+  
    
    
 }
 
 
 .divText{
-    display: flex;
+     height: auto; 
+     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; 
+    padding: 1vh;
     
+ 
 }
+
 
 
 .btnHome{
@@ -53,3 +88,4 @@
    font-weight: bold;
     cursor: pointer;
 }
+

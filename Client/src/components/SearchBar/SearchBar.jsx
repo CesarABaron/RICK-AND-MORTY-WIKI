@@ -42,7 +42,7 @@ function SearchBar(props) {
       <div className={styles.containert}>
         <h2 className={styles.tittle}>Rick and Morty Wiki</h2>
       </div>
-      <div>
+      <div className={styles.bcontariner}>
         {location.pathname === "/home" && (
           <input
             name="name"
