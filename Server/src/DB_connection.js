@@ -2,8 +2,8 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, SERVER_URL } = process.env;
 
-const UserModel = require("./models/User");
-const CharactersMododel = require("./models/characters");
+const UserModel = require("./models/User.js");
+const CharactersMododel = require("./models/characters.js");
 
 // EJERCICIO 03
 // A la instancia de Sequelize le falta la URL de conexión. ¡Agrégala!
