@@ -54,6 +54,7 @@ const Forms = () => {
         <div className={styles.div1}>
           <label className="email">Email: </label>
           <input
+            className={styles.inputs}
             placeholder="Enter your Email..."
             type="text"
             name="email"
@@ -64,8 +65,9 @@ const Forms = () => {
         </div>
 
         <div className={styles.div2}>
-          <label className="password">Password: </label>
+          <label className={"password"}>Password: </label>
           <input
+            className={styles.inputs}
             placeholder="
 Enter your password..."
             type="password"
@@ -74,9 +76,8 @@ Enter your password..."
             onChange={handleChange}
           ></input>
           {errors.password && <span>{errors.password}</span>}
+          <button className={styles.buton2}>Log In</button>
         </div>
-
-        <button>Log In</button>
       </form>
       <Link to={"/register"}>
         <p className={styles.doyu}>Don't have an account?</p>

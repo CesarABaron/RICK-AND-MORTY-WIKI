@@ -9,10 +9,19 @@
 }
 
 
+.inputs{
+    background-color: #ffffff;
+    border-radius: 17px;
+    padding: 10px;
+    border: none;
+}
 
 
+.container button{
+ border-radius: 15px;
 
-
+  
+}
 
 .form{
     background-image: url("../assets/rickmortyform.jpg");
@@ -83,7 +92,7 @@ margin-top: 30px;
    padding: 10px;
    border-radius: 10px;
   color: aliceblue;
-    background-color: rgba(240, 248, 255, 0.185);
+   
 
 }
 
@@ -91,4 +100,8 @@ margin-top: 30px;
 .doyu:Hover{
     background-color: aliceblue;
    color: black;
+}
+
+.buton2:hover{
+    background-color: gray;
 }

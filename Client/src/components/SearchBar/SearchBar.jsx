@@ -39,25 +39,33 @@ function SearchBar(props) {
 
   return (
     <div className={styles.barra}>
-      {location.pathname === "/home" && (
-        <input
-          name="name"
-          value={input}
-          onChange={handleChange}
-          type="search"
-        />
-      )}
+      <div className={styles.containert}>
+        <h2 className={styles.tittle}>Rick and Morty Wiki</h2>
+      </div>
+      <div>
+        {location.pathname === "/home" && (
+          <input
+            name="name"
+            value={input}
+            onChange={handleChange}
+            type="search"
+            placeholder="Search By Name ..."
+          />
+        )}
 
-      <NavLink to="/favorites">
-        <button>Favorites</button>
-      </NavLink>
-      <NavLink to="/home">
-        <button>Home</button>
-      </NavLink>
+        <NavLink to="/favorites">
+          <button className={styles.NavButton}>Favorites</button>
+        </NavLink>
+        <NavLink to="/home">
+          <button className={styles.NavButton}>Home</button>
+        </NavLink>
 
-      <NavLink to="/">
-        <button onClick={handleExit}>Log Out</button>
-      </NavLink>
+        <NavLink to="/">
+          <button className={styles.NavButton} onClick={handleExit}>
+            Log Out
+          </button>
+        </NavLink>
+      </div>
     </div>
   );
 }

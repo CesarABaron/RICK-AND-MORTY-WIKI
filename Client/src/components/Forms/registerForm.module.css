@@ -25,14 +25,38 @@
     border: solid white;
 }
 
+.inputs {
+    background-color: #ffffff;
+    border-radius: 17px;
+    padding: 10px;
+    border: none;
+}
 
 .button{
     margin-top: 20px;
     height: 30px;
     width: 90px;
     border-radius: 10px;
-    margin-bottom: 40px;
+   margin-bottom: 5px;
     
 }
 
+.button:hover{
+    background-color: gray;
+    color: white;
 
+}
+
+.buttonback{
+    margin-top: 10px;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+}
+
+
+.buttonback:hover {
+    background-color: gray;
+    color: white;
+
+}

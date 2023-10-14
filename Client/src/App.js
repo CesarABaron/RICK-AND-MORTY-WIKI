@@ -44,7 +44,7 @@ function App() {
           element={
             characterByName[0] === false ? (
               <div className={styles.nohay}>
-                No hay Personajes con este nombre
+                There's no characters with this name
               </div>
             ) : characterByName.length > 0 ? (
               <Cards characters={characterByName} />

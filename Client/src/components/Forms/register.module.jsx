@@ -41,7 +41,12 @@ const Example = () => {
       await dispatch(registerUser(input));
       navigate("/");
     } catch (error) {
-      Swal.fire(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error,
+      });
+      setInput({ email: "" });
     }
   };
 
@@ -50,9 +55,15 @@ const Example = () => {
       <form className={style.form}>
         <h1 className={style.title}>Register</h1>
         <label>Email</label>
-        <input onChange={handleChange} value={input.email} name="email"></input>
+        <input
+          className={style.inputs}
+          onChange={handleChange}
+          value={input.email}
+          name="email"
+        ></input>
         <label>Password</label>
         <input
+          className={style.inputs}
           onChange={handleChange}
           value={input.password}
           name="password"
@@ -62,7 +73,10 @@ const Example = () => {
           Sign Up
         </button>
         <Link to="/">
-          <button> Do you already have an account? </button>
+          <button className={style.buttonback}>
+            {" "}
+            Do you already have an account?{" "}
+          </button>
         </Link>
         {error && <p>Invalid credentials</p>}
       </form>

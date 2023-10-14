@@ -126,7 +126,11 @@ export const loginUser = (user) => {
         payload: response.data,
       });
     } catch (error) {
-      Swal.fire(error.response.data);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.response.data,
+      });
     }
   };
 };
@@ -139,7 +143,14 @@ export const registerUser = (user) => {
         user
       );
 
-      response && Swal.fire("Your account was created successfully");
+      response &&
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your account was created successfully",
+          showConfirmButton: false,
+          timer: 3000,
+        });
 
       dispatch({
         type: REGISTER,
