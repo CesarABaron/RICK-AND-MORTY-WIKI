@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.351bda57.css",
+    "main.js": "/static/js/main.536c92c7.js",
+    "static/media/wp8344223.jpg": "/static/media/wp8344223.a366185d843f24766136.jpg",
+    "static/media/rickmortyform.jpg": "/static/media/rickmortyform.c97b7b6779312acf00fe.jpg",
+    "index.html": "/index.html",
+    "main.351bda57.css.map": "/static/css/main.351bda57.css.map",
+    "main.536c92c7.js.map": "/static/js/main.536c92c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.351bda57.css",
+    "static/js/main.536c92c7.js"
+  ]
+}
