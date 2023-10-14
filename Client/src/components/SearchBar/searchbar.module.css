@@ -9,6 +9,10 @@ gap: 300px;
 
 }
 
+.bcontariner{
+    display: flex;
+   
+}
 
 .containert{
    font-size: 20px;

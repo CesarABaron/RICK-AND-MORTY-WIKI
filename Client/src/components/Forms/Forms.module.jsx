@@ -64,7 +64,7 @@ const Forms = () => {
           {errors.email && <span>{errors.email}</span>}
         </div>
 
-        <div className={styles.div2}>
+        <div className={styles.div1}>
           <label className={"password"}>Password: </label>
           <input
             className={styles.inputs}

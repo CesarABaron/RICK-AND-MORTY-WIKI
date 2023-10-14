@@ -1,9 +1,11 @@
 .container{
-    height: 750px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    
     
 }
 
@@ -23,6 +25,20 @@
     align-items: center;
     border-radius: 20px;
     border: solid white;
+}
+
+@media (max-width: 412px){
+    .form {
+            background-color: black;
+            color: azure;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            border: solid white;
+        }
 }
 
 .inputs {

@@ -14,8 +14,23 @@
     border-radius: 17px;
     padding: 10px;
     border: none;
+
 }
 
+
+.container form .div1 input {
+    width: 310px;
+    height: 25px;
+
+}
+
+
+@media (max-width: 412px){
+    .container form .div1 input{
+        width: 200px;
+            height: 5px;
+    }
+}
 
 .container button{
  border-radius: 15px;
@@ -41,6 +56,20 @@
 }
 
 
+@media (max-width: 412px) {
+    .form {
+        
+            
+           
+            width: 80px;
+            height: 160px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+    }
+}
+
 .container form button{
 height: 30px;    
 width: 150px;
@@ -48,13 +77,16 @@ margin-top: 30px;
 
 }
 
-
-
-.container form .div1 input{
-    width: 310px;
-    height: 25px;
+@media (max-width: 412px){
+    .container form button {
+            height: 30px;
+            width: 100px;
+            margin-top: 30px;
     
+        }
 }
+
+
 
 .container form .div1 span{
    color: brown;
@@ -65,10 +97,6 @@ margin-top: 30px;
 
 
 
-.container form .div2 input{
-    width: 310px;
-    height: 25px;
-}
 
 
 .container form .div2 span{
@@ -97,6 +125,15 @@ margin-top: 30px;
 }
 
 
+@media (max-width: 412px){
+    .doyu {
+            bottom: 80px;
+            right: 65px;
+            font-size: 12px;
+        }
+}
+
+
 .doyu:Hover{
     background-color: aliceblue;
    color: black;
@@ -104,4 +141,7 @@ margin-top: 30px;
 
 .buton2:hover{
     background-color: gray;
+
 }
+
+

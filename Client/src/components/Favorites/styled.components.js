@@ -11,6 +11,6 @@ export const MainDiv = styled.div`
 
 export const MainDiv2 = styled.div`
   position: absolute;
-  top: 2vh;
-  left: 35vh;
+  top: 1.5vh;
+  left: 80vh;
 `;
