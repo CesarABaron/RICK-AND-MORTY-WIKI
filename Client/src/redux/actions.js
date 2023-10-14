@@ -12,14 +12,15 @@ export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const PAGINATE = "PAGINATE";
 export const CLEAR = "CLEAR";
-export const NEXT = "NEXT";
-export const BACK = "BACK";
+
+const serverURL = "https://rickandmortyserver-hbxk.onrender.com";
+// const serverURL = "http://localhost:3001";
 
 export const addFav = (character) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/rickandmorty/favorite",
+        `${serverURL}/rickandmorty/favorite`,
         character
       );
       dispatch({ type: ADD_FAV, payload: response.data });
@@ -31,7 +32,7 @@ export const removeFav = (id) => {
   return async function (dispatch) {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/rickandmorty/fav/${id}`
+        `${serverURL}/rickandmorty/fav/${id}`
       );
       dispatch({
         type: REMOVE_FAV,
@@ -59,7 +60,7 @@ export const getAllCharacters = () => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/allCharacters`
+        `${serverURL}/rickandmorty/allCharacters`
       );
       dispatch({
         type: GET_ALL_CHARACTERS,
@@ -73,7 +74,7 @@ export const getCharactersByName = (name) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/rickandmorty/character?name=${name}`
+        `${serverURL}/rickandmorty/character?name=${name}`
       );
 
       dispatch({
@@ -90,7 +91,7 @@ export const allFavorites = (user) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/rickandmorty/favorites`,
+        `${serverURL}/rickandmorty/favorites`,
         user
       );
 
@@ -116,9 +117,10 @@ export const loginUser = (user) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/rickandmorty/login`,
+        `${serverURL}/rickandmorty/login`,
         user
       );
+      console.log(response);
       localStorage.setItem("access", response.data.acces);
       localStorage.setItem("id", response.data.id);
       localStorage.setItem("fav", response.data.favorites);
@@ -136,7 +138,7 @@ export const registerUser = (user) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/rickandmorty/register`,
+        `${serverURL}/rickandmorty/register`,
         user
       );
 
@@ -170,21 +172,21 @@ export const clearFav = () => {
   };
 };
 
-export const next = (next) => {
-  console.log("next", next);
-  return async (dispatch) => {
-    return await dispatch({
-      type: "NEXT",
-      payload: next,
-    });
-  };
-};
+// export const next = (next) => {
+//   console.log("next", next);
+//   return async (dispatch) => {
+//     return await dispatch({
+//       type: "NEXT",
+//       payload: next,
+//     });
+//   };
+// };
 
-export const back = (back) => {
-  return async (dispatch) => {
-    return await dispatch({
-      type: "BACK",
-      payload: back,
-    });
-  };
-};
+// export const back = (back) => {
+//   return async (dispatch) => {
+//     return await dispatch({
+//       type: "BACK",
+//       payload: back,
+//     });
+//   };
+// };
