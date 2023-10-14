@@ -5,12 +5,19 @@ const getCharacters = async () => {
   const maxCount = 42;
   const allcharactersRaw = [];
 
+  const verify = await Characters.findOne({
+    where: { name: "Armothy" },
+  });
+
   try {
-    for (let i = 0; i <= maxCount; i++) {
-      allcharactersRaw.push(
-        axios.get(`https://rickandmortyapi.com/api/character?page=${i}`)
-      );
-    }
+    if (verify) {
+      return console.log("La base de datos esta cargada");
+    } else
+      for (let i = 0; i <= maxCount; i++) {
+        allcharactersRaw.push(
+          axios.get(`https://rickandmortyapi.com/api/character?page=${i}`)
+        );
+      }
 
     const responseFix = await Promise.all(allcharactersRaw);
 
@@ -40,10 +47,6 @@ const getCharacters = async () => {
         idsUnicos[objeto.id] = true;
         objetosUnicos.push(objeto);
       }
-    });
-
-    const verify = await Characters.findOne({
-      where: { name: "Armothy" },
     });
 
     if (verify === null) {
