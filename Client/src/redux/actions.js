@@ -105,7 +105,6 @@ export const allFavorites = (user) => {
 
 export const currentP = (data) => {
   return async function (dispatch) {
-    console.log("current", data);
     dispatch({
       type: GECURRENT,
       payload: data,
@@ -120,7 +119,6 @@ export const loginUser = (user) => {
         `${serverURL}/rickandmorty/login`,
         user
       );
-      console.log(response);
       localStorage.setItem("access", response.data.acces);
       localStorage.setItem("id", response.data.id);
       localStorage.setItem("fav", response.data.favorites);

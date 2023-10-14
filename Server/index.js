@@ -32,7 +32,7 @@ server.use(morgan("dev"));
 server.use("/rickandmorty", router);
 server.use(express.json());
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
   server.listen(PORT, async () => {
     await getCharacters();
     console.log("Servidor levantado en el puerto: " + PORT);

@@ -18,8 +18,6 @@ const Example = () => {
 
   const [error, setError] = useState(false);
 
-  console.log(input);
-
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
