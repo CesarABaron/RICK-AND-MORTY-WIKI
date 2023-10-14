@@ -121,7 +121,6 @@ export const loginUser = (user) => {
       );
       localStorage.setItem("access", response.data.acces);
       localStorage.setItem("id", response.data.id);
-      localStorage.setItem("fav", response.data.favorites);
       dispatch({
         type: LOGIN,
         payload: response.data,
